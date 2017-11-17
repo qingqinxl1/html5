@@ -1,6 +1,6 @@
 ## html5
 
-###canvas画表
+### canvas画表
 
 > 画出简单的圆
 
@@ -10,7 +10,7 @@
 
 > 使用toDataURL方法获取画布上的图片
 
-###canvas画八卦图
+### canvas画八卦图
 
 > 大圆分两边
 
