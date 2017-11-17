@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>canvas画布</title>
+</head>
+
+<body>
+  <p>canvas画布</p>
+  <canvas id="drawing" width="300" height="300"></canvas>
+
+  <p>获取canvas画布画好的图片</p>
+  <div id="drawnImg">
+  </div>
+
+  <script type="text/javascript">
+    var drawn = document.getElementById('drawing');
+    if (drawn.getContext) {
+      var context = drawn.getContext('2d');
+
+      context.beginPath(); //开始路径
+
+      context.translate(150, 150); //原点挪到中心
+
+      context.arc(0, 0, 99, 0, 2 * Math.PI, false); //绘制外圆
+      context.moveTo(92, 0); //回到92,0点
+
+      context.arc(0, 0, 92, 0, 2 * Math.PI, false); //绘制内圆
+      context.moveTo(0, 0);
+
+      context.lineTo(0, -78); //绘制分针
+      context.moveTo(0, 0);
+
+      context.lineTo(50, 0) //绘制时针
+      context.moveTo(0, 0);
+
+      //设置文字样式
+      context.font = 'bold 14px Arial';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+
+      context.fillText('12', 0, -84); //添加文字
+      context.fillText('3', 84, 0);
+      context.fillText('6', 0, 84);
+      context.fillText('9', -84, 0);
+
+      context.stroke();
+    }
+
+    //将画布上的图片以image的方式展出
+    var imgURL = drawn.toDataURL();
+    var imgWrap = document.getElementById('drawnImg');
+    var img = document.createElement('img');
+
+    img.src = imgURL;
+    imgWrap.appendChild(img);
+  </script>
+</body>
+
+</html>
